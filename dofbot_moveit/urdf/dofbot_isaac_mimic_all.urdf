@@ -268,10 +268,13 @@
             </geometry>
         </collision>
     </link>
-    <joint name="rlink_joint3" type="fixed">
+    <joint name="rlink_joint3" type="revolute">
         <origin xyz="-0.0035 -0.0045 -0.0505" rpy="0 -1.5708 0" />
         <parent link="arm_link5" />
         <child link="rlink3" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.54" upper="0" effort="100" velocity="1" />
+        <mimic joint="grip_joint" multiplier="1" offset="0" />
     </joint>
 
     <!-- Left finger chain -->
@@ -361,10 +364,13 @@
             </geometry>
         </collision>
     </link>
-    <joint name="llink_joint3" type="fixed">
+    <joint name="llink_joint3" type="revolute">
         <origin xyz="-0.0035 0.0045 -0.0505" rpy="0 -1.5708 0" />
         <parent link="arm_link5" />
         <child link="llink3" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.54" upper="0" effort="100" velocity="1" />
+        <mimic joint="grip_joint" multiplier="-1" offset="0" />
     </joint>
 
     <!-- Transmissions unchanged (kept for ROS compatibility; Isaac may ignore) -->
